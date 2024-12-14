@@ -1,6 +1,6 @@
 async function fetchCotacao() {
     try {
-        const response = await fetch('https://api-invest-547sevqvv-arthurs-projects-cbccea18.vercel.app/?vercelToolbarCode=gJq71QlesgtBwhg');
+        const response = await fetch('https://api-invest-pi.vercel.app/');
         const data = await response.json();
         console.log(data);
         let fundosAtualizados = data.fundosAtualizados;

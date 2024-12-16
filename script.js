@@ -5,7 +5,7 @@
         console.log(data);
         let fundosAtualizados = data.fundosAtualizados;
 
-        let table = document.getElementById("dados");//select table to show data
+        let table = document.getElementById("data");//select table to show data
         for (let i = 0;i<fundosAtualizados.length;i++){
             //show data on the table
             table.innerHTML += `

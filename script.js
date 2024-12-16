@@ -1,6 +1,18 @@
+const fundos = ["gare11", "ggrc11", "trxf11"];
 async function fetchCotacao() {
     try {
-        const response = await fetch('https://api-invest-pi.vercel.app/');//fetch of my own api 
+        const response = await fetch('https://api-invest-pi.vercel.app/', {//fetch of my own api
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Define o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify({ fundos }) // Converte os dados em JSON e envia no corpo da requisição
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        } 
+        
         const data = await response.json();
         console.log(data);
         let fundosAtualizados = data.fundosAtualizados;

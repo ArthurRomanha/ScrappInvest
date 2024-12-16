@@ -1,4 +1,8 @@
-const fundos = ["gare11", "ggrc11", "trxf11"];
+let fundos = [
+    { "ticker": "gare11", cotacao: "", pvp: "", precoJusto: "", valueDividendYeldTwelveMonths: "", lastDividend: "" },
+    { "ticker": "ggrc11", cotacao: "", pvp: "", precoJusto: "", valueDividendYeldTwelveMonths: "", lastDividend: "" },
+    { "ticker": "trxf11", cotacao: "", pvp: "", precoJusto: "", valueDividendYeldTwelveMonths: "", lastDividend: "" }
+];
 async function fetchCotacao() {
     try {
         const response = await fetch('https://api-invest-pi.vercel.app/', {//fetch of my own api

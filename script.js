@@ -1,4 +1,4 @@
-.async function fetchCotacao() {
+async function fetchCotacao() {
     try {
         const response = await fetch('https://api-invest-pi.vercel.app/');//fetch of my own api 
         const data = await response.json();

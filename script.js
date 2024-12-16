@@ -1,13 +1,14 @@
-async function fetchCotacao() {
+.async function fetchCotacao() {
     try {
-        const response = await fetch('https://api-invest-pi.vercel.app/');
+        const response = await fetch('https://api-invest-pi.vercel.app/');//fetch of my own api 
         const data = await response.json();
         console.log(data);
         let fundosAtualizados = data.fundosAtualizados;
 
-        let table = document.getElementById("dados");
+        let table = document.getElementById("dados");//select table to show data
         for (let i = 0;i<fundosAtualizados.length;i++){
-            table.innerHTML += ` 
+            //show data on the table
+            table.innerHTML += `
             <tr>
                 <td>${fundosAtualizados[i].ticker.toUpperCase()}</td>
                 <td>${fundosAtualizados[i].cotacao}</td>

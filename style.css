@@ -5,13 +5,72 @@
 }
 html{
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+body{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 25px;
+}
+h3{
+    grid-column: 2;
+}
+.fundos{
+    padding: 10px;
+    grid-column: 2;
+    width: 100%;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  
+    align-items: center;
+    justify-items: center;
+    border: 1px solid rgb(67, 67, 67);
+    border-radius: 10px;
+}
+.container-fundo{
+    width: fit-content;
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+.fundo{
+    min-width: 10px;
+    border-bottom: 1px solid white;
+}
+.newFundo{  
+    padding: 0 15px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    width: 100%;
+    height: 100%;
+}
+.buttons *{
+    height: fit-content;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+button{
+    border: none;
+    color: white;
+    background-color: black;
 }
 table {
     width: 100%;
+    grid-column: 2;
     border-collapse: collapse;
 }
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #6a6a6a;
     padding: 8px;
     text-align: left;
 }

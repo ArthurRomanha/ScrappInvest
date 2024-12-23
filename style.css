@@ -40,7 +40,7 @@ html {
 }
 body{
     display: grid;
-    margin-top: 20px;
+    margin: 20px;
     align-items: center;
     justify-items: center;
     gap: 25px 0;
@@ -62,7 +62,7 @@ body{
     width: 100%;
     gap: 5px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     align-items: center;
     justify-items: center;
     border: 3px solid #3c3cbb;

@@ -1,6 +1,6 @@
 const fundosElement = document.getElementById("fundos");
 let fundos = [];
-let table = document.getElementById("data");//select table to show data
+let table = document.getElementById("data");
 const enviaDados = () => {
     table.innerHTML = `
         <tbody>
@@ -15,8 +15,8 @@ const enviaDados = () => {
         </tbody>`;
     fundosTicker = document.querySelectorAll(".fundo");
     fundos = [];
-    for (let fundo of fundosTicker) {
-        if ((fundo.textContent.length == 6) && (fundo.textContent.endsWith("11"))) {
+    for (let fundo of fundosTicker) {//verifica se é um fundo "válido"
+        if ((fundo.textContent.length == 6) && (fundo.textContent.endsWith("11"))) {//se for envia para o array que será enviado para a api
             fundos.push({ "ticker": `${fundo.textContent.toUpperCase()}`, cotacao: "", pvp: "", precoJusto: "", valueDividendYeldTwelveMonths: "", lastDividend: "" });
         }
     }
@@ -25,7 +25,7 @@ const enviaDados = () => {
 
 async function fetchCotacao() {
     try {
-        const response = await fetch('https://api-invest-pi.vercel.app/', {//fetch of my own api
+        const response = await fetch('https://api-invest-pi.vercel.app/', {//fetch da minha própria api
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Define o tipo de conteúdo como JSON
@@ -38,10 +38,9 @@ async function fetchCotacao() {
         }
 
         const data = await response.json();
-        console.log(data);
         let fundosAtualizados = data.fundosAtualizados;
         for (let i = 0; i < fundosAtualizados.length; i++) {
-            //show data on the table
+            //mostra o resultado da api
             table.innerHTML += `
             <tr>
                 <td>${fundosAtualizados[i].ticker}</td>
@@ -58,22 +57,59 @@ async function fetchCotacao() {
         console.error('Error colecting data', error);
     }
 }
-const removeItem = (evento) => {
+const removeItem = (evento) => {//função para remover um fundo
 
     const elemento = evento.target;
 
     if (elemento.name == "remove") {
-        console.log(elemento);
-
         elemento.parentElement.remove();
     }
 }
-const addItem = (evento) => {
+const addItem = (evento) => {//função para adicionar um novo fundo
 
     const elemento = evento.target;
     if (elemento.name == "newFundo") {
         fundosElement.innerHTML += `<div class="container-fundo"><button name="remove">&#10060;</button><div contenteditable="true" class="fundo"></div></div>`;
     }
+}
+const presetArthur = () => {//função que exibe os fundos que eu acompanho
+    fundosElement.innerHTML = `
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">GARE11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">GGRC11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">TRXF11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">TEPP11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">MXRF11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">KNSC11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true"
+        class="fundo">XPML11</div>
+    </div>
+            `;
 }
 document.addEventListener("click", removeItem);
 document.addEventListener("click", addItem);

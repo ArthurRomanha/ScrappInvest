@@ -6,17 +6,34 @@
 html{
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+    background-color: black;
+    color: white;
 }
+
 body{
-    height: 100%;
     display: grid;
+    margin: 10px;
     grid-template-columns: 1fr 5fr 1fr;
     align-items: center;
     justify-items: center;
     gap: 25px;
 }
+header{
+    grid-column: 2;
+}
 h3{
     grid-column: 2;
+}
+.preset-arthur{
+    grid-column: 2;
+    color: black;
+    background-color: white;
+    padding: 10px;
+    border: 3px solid #3c3cbb;
+    border-radius: 10px;
+}
+.preset-arthur:hover{
+    opacity: 0.7;
 }
 .fundos{
     padding: 10px;
@@ -27,29 +44,30 @@ h3{
     grid-template-columns: repeat(5, 1fr);  
     align-items: center;
     justify-items: center;
-    border: 1px solid rgb(67, 67, 67);
+    border: 3px solid #3c3cbb;
     border-radius: 10px;
 }
 .container-fundo{
     width: fit-content;
     display: flex;
-    background-color: black;
     color: white;
     padding: 5px;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 10px;
 }
 .fundo{
-    min-width: 10px;
+    min-width: 20px;
     border-bottom: 1px solid white;
 }
-.newFundo{  
-    padding: 0 15px;
+button{
+    
+    cursor: pointer;    
 }
 .buttons{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
+    grid-column: 2;
     width: 100%;
     height: 100%;
 }
@@ -59,12 +77,30 @@ h3{
     padding: 10px;
     border-radius: 10px;
 }
+.newFundo{
+    background-color: #3b3abe;
+    border-bottom: none;
+}
+.newFundo:hover{
+    opacity: 0.7;
+}
+.newFundo:checked{
+    opacity: 0.5;
+}
+.submit{
+    background-color: #02503d;
+}
+.submit:hover{
+    opacity: 0.7;
+}
 button{
     border: none;
     color: white;
     background-color: black;
 }
 table {
+    color: black;
+    background-color: white;
     width: 100%;
     grid-column: 2;
     border-collapse: collapse;

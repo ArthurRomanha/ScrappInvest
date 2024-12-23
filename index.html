@@ -10,11 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 </head>
-<header></header>
+
 
 <body>
-    <h2>Planilha de Monitoramento de Fundos Imobiliários</h2>
+    <header><h2>Planilha de Monitoramento de Fundos Imobiliários</h2></header>
     <h3>Fundos:</h3>
+    <button class="preset-arthur" onclick="presetArthur()">Arthur</button>
     <div class="fundos" id="fundos">
         <div class="container-fundo"><button name="remove">&#10060;</button>
             <div contenteditable="true" class="fundo">GARE11</div>
@@ -29,10 +30,6 @@
             <div contenteditable="true" class="fundo">TEPP11</div>
         </div>
     </div>
-    <div class="buttons">
-        <button class="fundo newFundo" name="newFundo">+</button>
-        <button onclick="enviaDados()" class="submit">Enviar</button>
-    </div>
     <table id="data">
         <tbody>
             <tr>
@@ -45,6 +42,10 @@
             </tr>
         </tbody>
     </table>
+    <div class="buttons">
+        <button class="fundo newFundo" name="newFundo">Adicionar fundo</button>
+        <button onclick="enviaDados()" class="submit">Enviar</button>
+    </div>
     <script src="script.js"></script>
 </body>
 <footer></footer>

@@ -38,6 +38,8 @@ async function fetchCotacao() {
         }
 
         const data = await response.json();
+        console.log(data);
+        
         let fundosAtualizados = data.fundosAtualizados;
         for (let i = 0; i < fundosAtualizados.length; i++) {
             //mostra o resultado da api

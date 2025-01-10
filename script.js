@@ -25,7 +25,7 @@ const enviaDados = () => {
 
 async function fetchCotacao() {
     try {
-        const response = await fetch('https://api-invest-pi.vercel.app/', {//fetch da minha própria api
+        const response = await fetch('https://api-invest-t3jw6gp5y-arthurs-projects-cbccea18.vercel.app/', {//fetch da minha própria api
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Define o tipo de conteúdo como JSON

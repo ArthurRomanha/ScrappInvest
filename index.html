@@ -13,7 +13,10 @@
 
 
 <body>
-    <header><h2>Planilha de Monitoramento de Fundos Imobiliários</h2></header>
+    <header>
+        <h2>Planilha de Monitoramento de Fundos Imobiliários</h2>
+    </header>
+    <div id="container-indices"></div>
     <h3>Fundos:</h3>
     <div class="fundos" id="fundos">
         <div class="container-fundo"><button name="remove">&#10060;</button>
@@ -31,19 +34,19 @@
         <button onclick="enviaDados()" class="submit">Enviar</button>
     </div>
     <div class="container-table">
-    <table id="data">
-        <tbody>
-            <tr>
-                <th>Ticker</th>
-                <th>Cotação</th>
-                <th>P/VP</th>
-                <th>Preço Justo</th>
-                <th>DY 12M</th>
-                <th>Último Dividendo</th>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        <table id="data">
+            <tbody>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Cotação</th>
+                    <th>P/VP</th>
+                    <th>Preço Justo</th>
+                    <th>DY 12M</th>
+                    <th>Último Dividendo</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <h3>Presets:</h3>
     <button class="preset-arthur" onclick="presetArthur()">Arthur</button>
     <script src="script.js"></script>

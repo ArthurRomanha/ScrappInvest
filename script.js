@@ -1,4 +1,32 @@
 const fundosElement = document.getElementById("fundos");
+const indicesElement = document.getElementById("container-indices");
+async function getIndices() {
+    const response = await fetch('https://api-invest-pi.vercel.app/');
+    const data = await response.json();
+    console.log(data);
+
+    let dados = data.dadosAtt.indicesPadrao;
+    console.log(dados);
+
+    for (let i = 0; i < dados.length; i++) {
+        if (i == 3) {
+            indicesElement.innerHTML += `<div class="indices">
+            <div class="indice-header">${dados[i].indice}</div>
+            <div class="indice-body">${dados[i].valor}</div>
+        </div>`
+        } else {
+            indicesElement.innerHTML += `<div class="indices">
+            <div class="indice-header">${dados[i].indice}</div>
+            <div class="indice-body">${dados[i].valor}%</div>
+        </div>`
+        }
+
+
+    }
+
+
+}
+getIndices();
 let fundos = [];
 let table = document.getElementById("data");
 const enviaDados = () => {
@@ -38,7 +66,7 @@ async function fetchCotacao() {
         }
 
         const data = await response.json();
-        
+
         let fundosAtualizados = data.fundosAtualizados.fundosPadrao;
         for (let i = 0; i < fundosAtualizados.length; i++) {
             //mostra o resultado da api
@@ -53,7 +81,6 @@ async function fetchCotacao() {
             </tr>
             `
         }
-
     } catch (error) {
         console.error('Error colecting data', error);
     }
@@ -107,8 +134,42 @@ const presetArthur = () => {//função que exibe os fundos que eu acompanho
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true"
-        class="fundo">XPML11</div>
+        <div contenteditable="true" class="fundo">XPML11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">HGRU11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">KNRI11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">BTLG11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">HGLG11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">SAPI11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">BTCI11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">TGAR11</div>
     </div>
             `;
 }

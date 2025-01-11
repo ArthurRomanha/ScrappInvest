@@ -3,10 +3,8 @@ const indicesElement = document.getElementById("container-indices");
 async function getIndices() {
     const response = await fetch('https://api-invest-pi.vercel.app/');
     const data = await response.json();
-    console.log(data);
 
     let dados = data.dadosAtt.indicesPadrao;
-    console.log(dados);
 
     for (let i = 0; i < dados.length; i++) {
         if (i == 3) {
@@ -20,11 +18,7 @@ async function getIndices() {
             <div class="indice-body">${dados[i].valor}%</div>
         </div>`
         }
-
-
     }
-
-
 }
 getIndices();
 let fundos = [];

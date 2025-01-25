@@ -40,7 +40,7 @@ html {
         grid-column: 2;
     }
 
-    .preset-arthur {
+    .presets {
         grid-column: 2;
     }
 }
@@ -52,7 +52,8 @@ body {
     justify-items: center;
     gap: 25px 0;
 }
-#container-indices{
+
+#container-indices {
     width: 100%;
     gap: 20px;
     display: grid;
@@ -60,11 +61,13 @@ body {
     padding: 15px;
     border-radius: 10px;
 }
-.indices{
+
+.indices {
     min-width: 20px;
     border: 2px solid #3c3cbb;
     border-radius: 10px;
 }
+
 .fundos {
     padding: 5px;
     width: 100%;
@@ -122,6 +125,14 @@ button {
 .newFundo:checked {
     opacity: 0.5;
 }
+.clear {
+    color: black;
+    background-color: #00d9ff;
+}
+
+.clear:hover {
+    cursor: pointer;
+}
 
 .submit {
     background-color: #02503d;
@@ -150,36 +161,50 @@ button {
 table {
     width: 100%;
     color: black;
-    background-color: white;
+    border: none;
     border-collapse: collapse;
 }
-
-th,
-td {
+tr th:hover{
+    cursor: pointer;
+}
+th, td {
     border: 1px solid #6a6a6a;
-    padding: 8px;
-    text-align: left;
+    padding: 5px 3px;
 }
-
-th {
-    background-color: #f2f2f2;
+.invisible{
+    background-color: black;
+    border: transparent;
 }
-
+th {    
+    justify-content: left;
+    align-items: center;
+    margin: 10px;
+    background-color: #cdcdcd;
+}
+tr{
+    background-color: white;
+}
 tr:hover {
     background-color: #f1f1f1;
+}   
+.presets{
+    padding: 5px;
+    width: 100%;
+    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    align-items: center;
+    justify-items: center;
+    border: 3px solid #3c3cbb;
+    border-radius: 10px;
 }
-tr:checked{
-    background-color: #2ee31a;
-}
-
-.preset-arthur {
+.presets *{
     color: black;
     background-color: white;
     padding: 10px;
     border: 3px solid #3c3cbb;
     border-radius: 10px;
 }
-
-.preset-arthur:hover {
+.presets *:hover {
     opacity: 0.7;
 }

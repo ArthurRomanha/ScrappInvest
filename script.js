@@ -1,5 +1,8 @@
 const fundosElement = document.getElementById("fundos");
 const indicesElement = document.getElementById("container-indices");
+const buttonAddFundo = document.querySelector(".newFundo");
+const buttonClear = document.querySelector(".clear");
+
 async function getIndices() {
     const response = await fetch('https://api-invest-pi.vercel.app/');
     const data = await response.json();
@@ -22,19 +25,9 @@ async function getIndices() {
 }
 getIndices();
 let fundos = [];
-let table = document.getElementById("data");
+
 const enviaDados = () => {
-    table.innerHTML = `
-        <tbody>
-            <tr>
-                <th>Ticker</th>
-                <th>Cotação</th>
-                <th>P/VP</th>
-                <th>Preço Justo</th>
-                <th>DY 12M</th>
-                <th>Último Dividendo</th>
-            </tr>
-        </tbody>`;
+
     fundosTicker = document.querySelectorAll(".fundo");
     fundos = [];
     for (let fundo of fundosTicker) {//verifica se é um fundo "válido"
@@ -60,12 +53,14 @@ async function fetchCotacao() {
         }
 
         const data = await response.json();
+        const tbody = document.getElementById("dadosFundos");
 
         let fundosAtualizados = data.fundosAtualizados.fundosPadrao;
         for (let i = 0; i < fundosAtualizados.length; i++) {
             //mostra o resultado da api
-            table.innerHTML += `
+            tbody.innerHTML += `
             <tr>
+                <td class="invisible"><button name="removeG">❌</button></td>
                 <td>${fundosAtualizados[i].ticker}</td>
                 <td>${fundosAtualizados[i].cotacao}</td>
                 <td>${fundosAtualizados[i].pvp}</td>
@@ -85,7 +80,12 @@ const removeItem = (evento) => {//função para remover um fundo
 
     if (elemento.name == "remove") {
         elemento.parentElement.remove();
+    } else if (elemento.name == "removeG") {
+        elemento.parentElement.parentElement.remove();
     }
+}
+const clear = () => {//função para limpar os fundos
+    fundosElement.innerHTML = ``;
 }
 const addItem = (evento) => {//função para adicionar um novo fundo
 
@@ -94,31 +94,82 @@ const addItem = (evento) => {//função para adicionar um novo fundo
         fundosElement.innerHTML += `<div class="container-fundo"><button name="remove">&#10060;</button><div contenteditable="true" class="fundo"></div></div>`;
     }
 }
-const presetArthur = () => {//função que exibe os fundos que eu acompanho
-    fundosElement.innerHTML = `
+
+let lastSortedColumn = null;
+let sortDirection = true; // true para crescente, false para decrescente
+
+function sortTable(columnIndex) {
+    const tbody = document.getElementById('dadosFundos');
+    const rows = Array.from(tbody.rows);
+
+    // Verifica se a coluna é numérica ou textual
+    const isNumericColumn = (columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 6); // Cotação, PVP, Preço Justo, Último Dividendo
+
+    // Inverte a direção se a mesma coluna for clicada novamente
+    if (lastSortedColumn === columnIndex) {
+        sortDirection = !sortDirection; // Inverte a direção
+    } else {
+        sortDirection = true; // Reseta a direção para crescente
+    }
+
+    lastSortedColumn = columnIndex; // Atualiza a coluna atual
+
+    rows.sort((a, b) => {
+        const cellA = a.cells[columnIndex].textContent.trim();
+        const cellB = b.cells[columnIndex].textContent.trim();
+
+        if (isNumericColumn) {
+            // Remove cifrões e converte para números
+            const numA = parseFloat(cellA.replace(/[R$]/g, '').replace(/,/g, ''));
+            const numB = parseFloat(cellB.replace(/[R$]/g, '').replace(/,/g, ''));
+
+            return sortDirection
+                ? numA - numB // Ordena numericamente em ordem crescente
+                : numB - numA; // Ordena numericamente em ordem decrescente
+        } else {
+            return sortDirection
+                ? cellA.localeCompare(cellB) // Ordena alfabeticamente em ordem crescente
+                : cellB.localeCompare(cellA); // Ordena alfabeticamente em ordem decrescente
+        }
+    });
+
+    // Reorganiza as linhas na tabela
+    rows.forEach(row => tbody.appendChild(row));
+}
+
+//funções que exibe os fundos que eu acompanho por setor
+const presetLogistica = () => {
+    fundosElement.innerHTML += `
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">GARE11</div>
+        <div contenteditable="true" class="fundo">KNRI11</div>
     </div>
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">GGRC11</div>
+        <div contenteditable="true" class="fundo">BTLG11</div>
     </div>
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">TRXF11</div>
+        <div contenteditable="true" class="fundo">HGLG11</div>
     </div>
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">TEPP11</div>
+        <div contenteditable="true" class="fundo">XPLG11</div>
+    </div>`;
+}
+const presetPapel = () => {
+    fundosElement.innerHTML += `
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">AFHI11</div>
     </div>
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">MXRF11</div>
+        <div contenteditable="true" class="fundo">HGCR11</div>
     </div>
 
     <div class="container-fundo">
@@ -128,44 +179,48 @@ const presetArthur = () => {//função que exibe os fundos que eu acompanho
 
     <div class="container-fundo">
         <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">SAPI11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">BTCI11</div>
+    </div>`;
+}
+const presetRU = () => {
+    fundosElement.innerHTML += `
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">HGRU11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">TRXF11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">RBVA11</div>
+    </div>`;
+}
+const presetShopping = () => {
+    fundosElement.innerHTML += `
+    <div class="container-fundo">
+        <button name="remove">❌</button>
         <div contenteditable="true" class="fundo">XPML11</div>
     </div>
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">HGRU11</div>
-    </div>
-    
-    <div class="container-fundo">
-        <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">KNRI11</div>
-    </div>
-    
-    <div class="container-fundo">
-        <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">BTLG11</div>
-    </div>
-    
-    <div class="container-fundo">
-        <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">HGLG11</div>
+        <div contenteditable="true" class="fundo">HGBS11</div>
     </div>
 
     <div class="container-fundo">
         <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">SAPI11</div>
-    </div>
-    
-    <div class="container-fundo">
-        <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">BTCI11</div>
-    </div>
-    
-    <div class="container-fundo">
-        <button name="remove">❌</button>
-        <div contenteditable="true" class="fundo">TGAR11</div>
-    </div>
-            `;
+        <div contenteditable="true" class="fundo">HSML11</div>
+    </div>`;
 }
 document.addEventListener("click", removeItem);
-document.addEventListener("click", addItem);
+buttonClear.addEventListener("click", clear);
+buttonAddFundo.addEventListener("click", addItem);

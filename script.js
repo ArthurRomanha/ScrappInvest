@@ -10,16 +10,22 @@ async function getIndices() {
     let dados = data.dadosAtt.indicesPadrao;
 
     for (let i = 0; i < dados.length; i++) {
-        if (i == 3) {
+        if (i == 3 || i == 4) {//ibovespa e ifix
             indicesElement.innerHTML += `<div class="indices">
-            <div class="indice-header">${dados[i].indice}</div>
-            <div class="indice-body">${dados[i].valor}</div>
-        </div>`
-        } else {
+                <div class="indice-header">${dados[i].indice}</div>
+                <div class="indice-body">${dados[i].valor}</div>
+            </div>`
+        } else if (i == 5) {//dólar
             indicesElement.innerHTML += `<div class="indices">
-            <div class="indice-header">${dados[i].indice}</div>
-            <div class="indice-body">${dados[i].valor}%</div>
-        </div>`
+                <div class="indice-header">${dados[i].indice}</div>
+                <div class="indice-body">R$ ${dados[i].valor}</div>
+            </div>`
+        }
+        else {//selic, cdi, ipca
+            indicesElement.innerHTML += `<div class="indices">
+                <div class="indice-header">${dados[i].indice}</div>
+                <div class="indice-body">${dados[i].valor}%</div>
+            </div>`
         }
     }
 }
@@ -32,7 +38,7 @@ const enviaDados = () => {
     fundos = [];
     for (let fundo of fundosTicker) {//verifica se é um fundo "válido"
         if ((fundo.textContent.length == 6) && (fundo.textContent.endsWith("11"))) {//se for envia para o array que será enviado para a api
-            fundos.push({ "ticker": `${fundo.textContent.toUpperCase()}`, cotacao: "", pvp: "", precoJusto: "", valueDividendYeldTwelveMonths: "", lastDividend: "" });
+            fundos.push({ "ticker": `${fundo.textContent.toUpperCase()}`, cotacao: "", pvp: "", precoJusto: "", valueDividendYeldTwelveMonths: "", lastDividend: "", liquidez:""});
         }
     }
     fetchCotacao();
@@ -61,12 +67,13 @@ async function fetchCotacao() {
             tbody.innerHTML += `
             <tr>
                 <td class="invisible"><button name="removeG">❌</button></td>
-                <td>${fundosAtualizados[i].ticker}</td>
+                <td><a href="https://investidor10.com.br/fiis/${fundosAtualizados[i].ticker}/">${fundosAtualizados[i].ticker}</a></td>
                 <td>${fundosAtualizados[i].cotacao}</td>
                 <td>${fundosAtualizados[i].pvp}</td>
                 <td>${fundosAtualizados[i].precoJusto}</td>
                 <td>${fundosAtualizados[i].valueDividendYeldTwelveMonths}</td>
                 <td>${fundosAtualizados[i].lastDividend}</td>
+                <td>${fundosAtualizados[i].liquidez}</td>
             </tr>
             `
         }
@@ -103,7 +110,7 @@ function sortTable(columnIndex) {
     const rows = Array.from(tbody.rows);
 
     // Verifica se a coluna é numérica ou textual
-    const isNumericColumn = (columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 6); // Cotação, PVP, Preço Justo, Último Dividendo
+    const isNumericColumn = (columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 6 || columnIndex === 7); // Cotação, PVP, Preço Justo, Último Dividendo, Liquidez
 
     // Inverte a direção se a mesma coluna for clicada novamente
     if (lastSortedColumn === columnIndex) {
@@ -120,8 +127,8 @@ function sortTable(columnIndex) {
 
         if (isNumericColumn) {
             // Remove cifrões e converte para números
-            const numA = parseFloat(cellA.replace(/[R$]/g, '').replace(/,/g, ''));
-            const numB = parseFloat(cellB.replace(/[R$]/g, '').replace(/,/g, ''));
+            const numA = parseFloat(cellA.replace((/[R$]/g && /[M]/g ), '').replace(/,/g, ''));
+            const numB = parseFloat(cellB.replace((/[R$]/g && /[M]/g ), '').replace(/,/g, ''));
 
             return sortDirection
                 ? numA - numB // Ordena numericamente em ordem crescente

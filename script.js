@@ -129,17 +129,22 @@ function sortTable(columnIndex) {
 
         if (isNumericColumn) {
             // Remove cifrões e converte para números
-            const numA = parseFloat(cellA.replace(/[R$]/g , '').replace(/,/g, ''));
-            const numB = parseFloat(cellB.replace(/[R$]/g , '').replace(/,/g, ''));
+            const numA = parseFloat(cellA.replace(/[$]/g, '').replace(/,/g, ''));
+            const numB = parseFloat(cellB.replace(/[$]/g, '').replace(/,/g, ''));
 
-            return sortDirection
-                ? numA - numB // Ordena numericamente em ordem crescente
-                : numB - numA; // Ordena numericamente em ordem decrescente
+            if (sortDirection) {
+                return numA - numB; // Ordena numericamente em ordem crescente
+            } else {
+                return numB - numA; // Ordena numericamente em ordem decrescente
+            }
         } else {
-            return sortDirection
-                ? cellA.localeCompare(cellB) // Ordena alfabeticamente em ordem crescente
-                : cellB.localeCompare(cellA); // Ordena alfabeticamente em ordem decrescente
+            if (sortDirection) {
+                return cellA.localeCompare(cellB); // Ordena alfabeticamente em ordem crescente
+            } else {
+                return cellB.localeCompare(cellA); // Ordena alfabeticamente em ordem decrescente
+            }
         }
+        
     });
 
     // Reorganiza as linhas na tabela

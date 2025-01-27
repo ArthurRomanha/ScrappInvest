@@ -1,3 +1,5 @@
 # ScrappInvest
 <h4>Project developed by Arthur Romanha</h4>
-This investment tracking spreadsheet was developed to monitor stock market assets, allowing me to learn and apply my knowledge about APIs. I created my own API that performs web scraping on a website and returns the data used by my front-end application.
+<p>Projeto sem fins lucrativos desenvolvido para aprimorar minhas habilidades e meus conhecimentos sobre: fundos imobiliários, api's node e web-scrapping</p>
+
+<p>Non-profit project developed to improve my skills and knowledge about: real estate funds, api's node and web-scrapping</p>

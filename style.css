@@ -43,6 +43,9 @@ html {
     .presets {
         grid-column: 2;
     }
+    footer{
+        grid-column: 2;
+    }
 }
 
 body {
@@ -213,8 +216,9 @@ tr:hover {
     opacity: 0.7;
 }
 footer{
+    width: 100%;
+    background-color: #171794;
     text-align: center; 
     padding: 10px; 
-    background-color: #f2f2f2; 
     border-top: 1px solid #ddd;
 }

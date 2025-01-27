@@ -11,6 +11,10 @@ html {
     text-align: center;
     background-color: black;
     color: white;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 25px 0;
 }
 
 @media (min-width: 500px) {
@@ -52,12 +56,6 @@ html {
     }
 }
 
-body {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    gap: 25px 0;
-}
 main{
     flex: 1;
 }

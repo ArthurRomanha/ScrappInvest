@@ -217,12 +217,16 @@ tr:hover {
 footer{
     width: 100%;
     text-align: center; 
+    align-items: center;
     padding: 10px; 
     border-top: 1px solid #ddd;
 }
 .icones{
     display: flex;
     justify-content: space-around;
+}
+.icones a{
+    color: white;
 }
 img{
     width: 50px;

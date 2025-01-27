@@ -129,8 +129,8 @@ function sortTable(columnIndex) {
 
         if (isNumericColumn) {
             // Remove cifrões e converte para números
-            const numA = parseFloat(cellA.replace(/[$]/g, '').replace(/,/g, ''));
-            const numB = parseFloat(cellB.replace(/[$]/g, '').replace(/,/g, ''));
+            const numA = parseFloat(cellA.replace(/[R$]/g, '').replace(/,/g, ''));
+            const numB = parseFloat(cellB.replace(/[R$]/g, '').replace(/,/g, ''));
 
             if (sortDirection) {
                 return numA - numB; // Ordena numericamente em ordem crescente

@@ -50,7 +50,6 @@ html {
 
 body {
     display: grid;
-    margin: 20px;
     align-items: center;
     justify-items: center;
     gap: 25px 0;

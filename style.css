@@ -56,7 +56,9 @@ body {
     justify-items: center;
     gap: 25px 0;
 }
-
+main{
+    flex: 1;
+}
 #container-indices {
     width: 100%;
     gap: 20px;

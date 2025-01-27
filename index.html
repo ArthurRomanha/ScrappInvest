@@ -16,65 +16,69 @@
     <header>
         <h2>Planilha de Monitoramento de Fundos Imobiliários</h2>
     </header>
-    <div id="container-indices"></div>
-    <h3>Fundos:</h3>
-    <div class="fundos" id="fundos">
-        <div class="container-fundo"><button name="remove">&#10060;</button>
-            <div contenteditable="true" class="fundo">HGCR11</div>
+    <main>
+        <div id="container-indices"></div>
+        <h3>Fundos:</h3>
+        <div class="fundos" id="fundos">
+            <div class="container-fundo"><button name="remove">&#10060;</button>
+                <div contenteditable="true" class="fundo">HGCR11</div>
+            </div>
+            <div class="container-fundo"><button name="remove">&#10060;</button>
+                <div contenteditable="true" class="fundo">AFHI11</div>
+            </div>
+            <div class="container-fundo"><button name="remove">&#10060;</button>
+                <div contenteditable="true" class="fundo">TRXF11</div>
+            </div>
+            <div class="container-fundo"><button name="remove">&#10060;</button>
+                <div contenteditable="true" class="fundo">BTLG11</div>
+            </div>
+            <div class="container-fundo"><button name="remove">&#10060;</button>
+                <div contenteditable="true" class="fundo">KNSC11</div>
+            </div>
         </div>
-        <div class="container-fundo"><button name="remove">&#10060;</button>
-            <div contenteditable="true" class="fundo">AFHI11</div>
+        <div class="buttons">
+            <button class="fundo newFundo" name="newFundo">Adicionar fundo</button>
+            <button class="clear">Clear</button>
+            <button onclick="enviaDados()" class="submit">Enviar</button>
         </div>
-        <div class="container-fundo"><button name="remove">&#10060;</button>
-            <div contenteditable="true" class="fundo">TRXF11</div>
-        </div>
-        <div class="container-fundo"><button name="remove">&#10060;</button>
-            <div contenteditable="true" class="fundo">BTLG11</div>
-        </div>
-        <div class="container-fundo"><button name="remove">&#10060;</button>
-            <div contenteditable="true" class="fundo">KNSC11</div>
-        </div>
-    </div>
-    <div class="buttons">
-        <button class="fundo newFundo" name="newFundo">Adicionar fundo</button>
-        <button class="clear">Clear</button>
-        <button onclick="enviaDados()" class="submit">Enviar</button>
-    </div>
-    <div class="container-table">
-        <table id="data">
-            <thead>
-                <tr>
-                    <th class="invisible"></th>
-                    <th onclick="sortTable(1)">Ticker</th>
-                    <th onclick="sortTable(2)">Cotação</th>
-                    <th onclick="sortTable(3)">PVP</th>
-                    <th onclick="sortTable(4)">Preço Justo</th>
-                    <th onclick="sortTable(5)">Preço de Entrada</th>
-                    <th onclick="sortTable(6)">Dividend Yield 12 meses</th>
-                    <th onclick="sortTable(7)">Último Dividendo</th>
-                    <th onclick="sortTable(8)">Liquidez</th>
+        <div class="container-table">
+            <table id="data">
+                <thead>
+                    <tr>
+                        <th class="invisible"></th>
+                        <th onclick="sortTable(1)">Ticker</th>
+                        <th onclick="sortTable(2)">Cotação</th>
+                        <th onclick="sortTable(3)">PVP</th>
+                        <th onclick="sortTable(4)">Preço Justo</th>
+                        <th onclick="sortTable(5)">Preço de Entrada</th>
+                        <th onclick="sortTable(6)">Dividend Yield 12 meses</th>
+                        <th onclick="sortTable(7)">Último Dividendo</th>
+                        <th onclick="sortTable(8)">Liquidez</th>
 
-                </tr>
-            </thead>
-            <tbody id="dadosFundos">
-                
-            </tbody>
-        </table>
-    </div>
-    <h3>Fundos por setor:</h3>
-    <div class="presets">
-        <button class="preset-logistica" onclick="presetLogistica()">Logística</button>
-        <button class="preset-papel" onclick="presetPapel()">Papel</button>
-        <button class="preset-ru" onclick="presetRU()">Renda Urbana</button>
-        <button class="preset-shopping" onclick="presetShopping()">Shopping</button>
-    </div>
-    <script src="script.js"></script>
+                    </tr>
+                </thead>
+                <tbody id="dadosFundos">
+
+                </tbody>
+            </table>
+        </div>
+        <h3>Fundos por setor:</h3>
+        <div class="presets">
+            <button class="preset-logistica" onclick="presetLogistica()">Logística</button>
+            <button class="preset-papel" onclick="presetPapel()">Papel</button>
+            <button class="preset-ru" onclick="presetRU()">Renda Urbana</button>
+            <button class="preset-shopping" onclick="presetShopping()">Shopping</button>
+        </div>
+        <script src="script.js"></script>
 </body>
+</main>
 <footer>
     <p>&copy; 2025 Arthur. Todos os direitos reservados.</p>
     <div class="icones">
-        <a href="mailto:vsrarthur2@gmail.com" aria-label="Email: vsrarthur2@gmail.com"><img src="img/email.png" alt="email icon"></a>
-        <a href="https://www.linkedin.com/in/arthur-vinicius-silva-romanha/"><img src="img/linkedin.png" alt="linkedin icon"></a>
+        <a href="mailto:vsrarthur2@gmail.com" aria-label="Email: vsrarthur2@gmail.com"><img src="img/email.png"
+                alt="email icon"></a>
+        <a href="https://www.linkedin.com/in/arthur-vinicius-silva-romanha/"><img src="img/linkedin.png"
+                alt="linkedin icon"></a>
     </div>
 </footer>
 

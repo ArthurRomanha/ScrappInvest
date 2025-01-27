@@ -67,7 +67,7 @@ async function fetchCotacao() {
             tbody.innerHTML += `
             <tr>
                 <td class="invisible"><button name="removeG">❌</button></td>
-                <td><a href="https://investidor10.com.br/fiis/${fundosAtualizados[i].ticker}/">${fundosAtualizados[i].ticker}</a></td>
+                <td><a href="https://investidor10.com.br/fiis/${fundosAtualizados[i].ticker}/" target="_blank">${fundosAtualizados[i].ticker}</a></td>
                 <td>${fundosAtualizados[i].cotacao}</td>
                 <td>${fundosAtualizados[i].pvp}</td>
                 <td>${fundosAtualizados[i].precoJusto}</td>

@@ -71,7 +71,7 @@ async function fetchCotacao() {
                 <td>${fundosAtualizados[i].cotacao}</td>
                 <td>${fundosAtualizados[i].pvp}</td>
                 <td>${fundosAtualizados[i].precoJusto}</td>
-                <td>R$ ${(fundosAtualizados[i].precoJusto.replace(/[R$]/g , '').replace(/,/g, '') * 0.9).parseFloat()}</td>
+                <td>R$ ${(fundosAtualizados[i].precoJusto.replace(/[R$]/g , '').replace(/,/g, '') * 0.9).parseFloat}</td>
                 <td>${fundosAtualizados[i].valueDividendYeldTwelveMonths}</td>
                 <td>${fundosAtualizados[i].lastDividend}</td>
                 <td>${fundosAtualizados[i].liquidez}</td>

@@ -71,6 +71,7 @@ async function fetchCotacao() {
                 <td>${fundosAtualizados[i].cotacao}</td>
                 <td>${fundosAtualizados[i].pvp}</td>
                 <td>${fundosAtualizados[i].precoJusto}</td>
+                <td>${fundosAtualizados[i].precoJusto * 0.9}</td>
                 <td>${fundosAtualizados[i].valueDividendYeldTwelveMonths}</td>
                 <td>${fundosAtualizados[i].lastDividend}</td>
                 <td>${fundosAtualizados[i].liquidez}</td>
@@ -98,7 +99,7 @@ const addItem = (evento) => {//função para adicionar um novo fundo
 
     const elemento = evento.target;
     if (elemento.name == "newFundo") {
-        fundosElement.innerHTML += `<div class="container-fundo"><button name="remove">&#10060;</button><div contenteditable="true" class="fundo"></div></div>`;
+        fundosElement.innerHTML += `<div class="container-fundo"><button name="remove">&#10060;</button><div contenteditable="true" class="fundo">11</div></div>`;
     }
 }
 
@@ -110,7 +111,8 @@ function sortTable(columnIndex) {
     const rows = Array.from(tbody.rows);
 
     // Verifica se a coluna é numérica ou textual
-    const isNumericColumn = (columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 6 || columnIndex === 7); // Cotação, PVP, Preço Justo, Último Dividendo, Liquidez
+    const isNumericColumn = (columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 5 ||columnIndex === 7 || columnIndex === 8); 
+    // Cotação, PVP, Preço Justo, Preço de Entrada, Último Dividendo, Liquidez
 
     // Inverte a direção se a mesma coluna for clicada novamente
     if (lastSortedColumn === columnIndex) {

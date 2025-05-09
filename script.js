@@ -8,6 +8,7 @@ async function getIndices() {
     const data = await response.json();
 
     let dados = data.dadosAtt.indicesPadrao;
+    console.log(dados);
     indicesElement.innerHTML = ``;
     for (let i = 0; i < dados.length; i++) {
         if (i == 3 || i == 4) {//ibovespa e ifix

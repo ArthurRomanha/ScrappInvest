@@ -8,6 +8,7 @@ async function getIndices() {
     const data = await response.json();
 
     let dados = data.dadosAtt.indicesPadrao;
+    console.log(dados);
     indicesElement.innerHTML = ``;
     for (let i = 0; i < dados.length; i++) {
         if (i == 3 || i == 4) {//ibovespa e ifix
@@ -15,13 +16,7 @@ async function getIndices() {
                 <div class="indice-header">${dados[i].indice}</div>
                 <div class="indice-body">${dados[i].valor}</div>
             </div>`
-        } else if (i == 5) {//dólar
-            indicesElement.innerHTML += `<div class="indices">
-                <div class="indice-header">${dados[i].indice}</div>
-                <div class="indice-body">R$ ${dados[i].valor}</div>
-            </div>`
-        }
-        else {//selic, cdi, ipca
+        }else {//selic, cdi, ipca
             indicesElement.innerHTML += `<div class="indices">
                 <div class="indice-header">${dados[i].indice}</div>
                 <div class="indice-body">${dados[i].valor}%</div>

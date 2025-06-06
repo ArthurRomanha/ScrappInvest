@@ -175,6 +175,33 @@ const presetLogistica = () => {
         <div contenteditable="true" class="fundo">XPLG11</div>
     </div>`;
 }
+const presetArthur = () => {
+    fundosElement.innerHTML += `
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">HGRU11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">TRXF11</div>
+    </div>
+
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">HGCR11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">BTLG11</div>
+    </div>
+    
+    <div class="container-fundo">
+        <button name="remove">❌</button>
+        <div contenteditable="true" class="fundo">HGBS11</div>
+    </div>`;
+}
 const presetPapel = () => {
     fundosElement.innerHTML += `
     <div class="container-fundo">
